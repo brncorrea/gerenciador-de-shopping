@@ -90,6 +90,19 @@ public class Shopping {
     }
 
     /**
+     * Counts how many stores currently occupy slots in the mall.
+     */
+    public int quantidadeTotalDeLojas() {
+        int quantidade = 0;
+        for (Loja loja : lojas) {
+            if (loja != null) {
+                quantidade++;
+            }
+        }
+        return quantidade;
+    }
+
+    /**
      * Returns the electronics store with the most expensive electronics
      * insurance, or null when the mall has no electronics stores.
      */
