@@ -9,8 +9,7 @@ public class Produto {
     private Data dataValidade;
 
     public Produto(String nome, double preco) {
-        this.nome = nome;
-        this.preco = preco;
+        this(nome, preco, null);
     }
 
     public Produto(String nome, double preco, Data dataValidade) {
@@ -45,19 +44,25 @@ public class Produto {
 
     /**
      * Checks whether the product is expired with respect to the given date.
+     * A product without an expiration date is never considered expired.
      */
     public boolean estaVencido(Data data) {
-        if (data.getAno() != dataValidade.getAno()) {
-            return data.getAno() > dataValidade.getAno();
+        if (dataValidade == null) {
+            return false;
         }
-        if (data.getMes() != dataValidade.getMes()) {
-            return data.getMes() > dataValidade.getMes();
-        }
-        return data.getDia() > dataValidade.getDia();
+        return dataValidade.isAnterior(data);
+    }
+
+    /**
+     * Checks whether the product is expired with respect to today's date.
+     */
+    public boolean estaVencidoHoje() {
+        return estaVencido(Data.hoje());
     }
 
     @Override
     public String toString() {
-        return "Produto: " + nome + " | Preco: " + preco + " | Validade: " + dataValidade;
+        String validade = dataValidade != null ? dataValidade.toString() : "sem validade";
+        return "Produto: " + nome + " | Preco: " + preco + " | Validade: " + validade;
     }
 }
