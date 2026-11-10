@@ -1,0 +1,22 @@
+# Compiled class files
+*.class
+
+# BlueJ project artifacts
+*.ctxt
+package.bluej
+README.TXT
+
+# Maven build output
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
