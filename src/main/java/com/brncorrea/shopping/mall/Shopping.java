@@ -15,7 +15,7 @@ public class Shopping {
     public Shopping(String nome, Endereco endereco, int tamanhoLojas) {
         this.nome = nome;
         this.endereco = endereco;
-        this.lojas = new Loja[tamanhoLojas];
+        this.lojas = new Loja[Math.max(tamanhoLojas, 0)];
     }
 
     public void setNome(String nome) {
