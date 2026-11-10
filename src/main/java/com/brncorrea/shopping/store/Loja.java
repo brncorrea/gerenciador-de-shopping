@@ -17,49 +17,36 @@ public class Loja {
     private Produto[] estoqueProdutos;
 
     public Loja(String nome, int quantidadeFuncionarios) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = -1;
+        this(nome, quantidadeFuncionarios, -1, null, null, 0);
     }
 
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = salarioBaseFuncionario;
+        this(nome, quantidadeFuncionarios, salarioBaseFuncionario, null, null, 0);
     }
 
     public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = -1;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
+        this(nome, quantidadeFuncionarios, -1, endereco, dataFundacao, 0);
     }
 
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = salarioBaseFuncionario;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
+        this(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, 0);
     }
 
     public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, int tamanhoEstoque) {
-        this.nome = nome;
-        this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = -1;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.estoqueProdutos = new Produto[tamanhoEstoque];
+        this(nome, quantidadeFuncionarios, -1, endereco, dataFundacao, tamanhoEstoque);
     }
 
+    /**
+     * Main constructor: all the other constructors delegate to it,
+     * keeping the inventory ready for use.
+     */
     public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, int tamanhoEstoque) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
-        this.estoqueProdutos = new Produto[tamanhoEstoque];
+        this.estoqueProdutos = new Produto[Math.max(tamanhoEstoque, 0)];
     }
 
     public void setNome(String nome) {
